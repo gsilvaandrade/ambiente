@@ -1,18 +1,5 @@
- pipeline {
-   {
-        stage('Build Docker Image') {
-            steps {
-              deleteDir()
-			  checkout scm
-            }
-        }
-
-     
-    }
-
-    post {
-        always {
-            deleteDir()
-        }
-    }
-}
+stage 'Checkout'
+ node('slave') {
+  deleteDir()
+  checkout scm
+ }
